@@ -68,10 +68,10 @@ verify:
 	@./scripts/verify-codegen.sh
 
 # Individual targets are found in .nsm.mk
-docker-build: docker-build-template-dataplane
+docker-build: docker-build-NSMDATAPLANETEMPLATE
 
 # Individual targets are found in .nsm.mk
-docker-push: docker-login docker-push-template-dataplane
+docker-push: docker-login docker-push-NSMDATAPLANETEMPLATE
 
 .PHONY: format deps generate install test test-race vet
 #

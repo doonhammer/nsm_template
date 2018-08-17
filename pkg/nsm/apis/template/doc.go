@@ -17,6 +17,6 @@
 // shutdown) and defines the core lifecycle SPI. The core lifecycle SPI
 // must be implemented by each plugin.
 
-package templatedataplane
+package NSMDATAPLANETEMPLATE
 
 //go:generate protoc -I . sidecardataplane.proto --go_out=plugins=grpc:. --proto_path=$GOPATH/src

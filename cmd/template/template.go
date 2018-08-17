@@ -26,7 +26,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ligato/networkservicemesh/pkg/nsm/apis/templatedataplane"
+	"github.com/nsm_development/samples/pkg/nsm/apis/NSMDATAPLANETEMPLATE"
 	"github.com/ligato/networkservicemesh/pkg/tools"
 	finalizerutils "github.com/ligato/networkservicemesh/plugins/finalizer/utils"
 	"github.com/sirupsen/logrus"

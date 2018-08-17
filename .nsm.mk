@@ -16,13 +16,13 @@
 # and docker build infrastructure. It also contains the targets to build
 # and push Docker images
 
-DOCKER_DATAPLANE=networkservicemesh/template-dataplane
+DOCKER_DATAPLANE=networkservicemesh/NSMDATAPLANETEMPLATE
 
 #
 # Target to build docker image
 #
-.PHONY: docker-build-template-dataplane
-docker-build-template-dataplane: docker-build-release
+.PHONY: docker-build-NSMDATAPLANETEMPLATE
+docker-build-NSMDATAPLANETEMPLATE: docker-build-release
 	@${DOCKERBUILD} -t ${DOCKER_DATAPLANE} -f build/Dockerfile .
 #
 # Targets to push docker images
@@ -32,8 +32,8 @@ docker-build-template-dataplane: docker-build-release
 docker-login:
 	@echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
-.PHONY: docker-push-template-dataplane
-docker-push-template-dataplane: docker-login
+.PHONY: docker-push-NSMDATAPLANETEMPLATE
+docker-push-NSMDATAPLANETEMPLATE: docker-login
 	@if [ "x${TRAVIS_TAG}" != "x" ] ; then \
 		export REPO=${DOCKER_DATAPLANE} ;\
 		docker tag ${REPO}:${COMMIT} ${REPO}:${TRAVIS_TAG} ;\

@@ -1,3 +1,3 @@
 FROM alpine as runtime
-COPY --from=networkservicemesh/release /go/bin/template-dataplane /go/bin/template-dataplane
-ENTRYPOINT ["/go/bin/template-dataplane"]
+COPY --from=networkservicemesh/release /go/bin/NSMDATAPLANETEMPLATE /go/bin/NSMDATAPLANETEMPLATE
+ENTRYPOINT ["/go/bin/NSMDATAPLANETEMPLATE"]

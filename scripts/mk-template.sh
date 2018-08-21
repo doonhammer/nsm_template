@@ -43,6 +43,8 @@ done
 echo
 if [ ! -z "$opt_t" ]; then
         nsm_dir='samples/nsm-'$opt_t
+        nsm_proto_dir=$opt_t'dataplane'
+        nsm_go_dir=$opt_t'-dataplane'
         echo "Creating new template directory structure below: $nsm_dir"
 fi
 if [ ! -z "$opt_p" ]; then
@@ -62,15 +64,15 @@ if [ ! -z "$opt_d" ]; then
 fi
 echo
 mkdir -p $nsm_dir/build
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/build/Dockerfile.template > $nsm_dir/build/Dockerfile
-mkdir -p $nsm_dir/cmd/$opt_t
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/cmd/template/template.go > $nsm_dir/cmd/$opt_t/$opt_t'.go'
-mkdir -p $nsm_dir/conf/$opt_t
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/conf/template/template.yaml > $nsm_dir/conf/$opt_t/$opt_t'.yaml'
-mkdir -p $nsm_dir/pkg/nsm/apis/$opt_t
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/pkg/nsm/apis/template/template.proto > $nsm_dir/pkg/nsm/apis/$opt_t/$opt_t'.proto'
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/pkg/nsm/apis/template/doc.go > $nsm_dir/pkg/nsm/apis/$opt_t/doc.go
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/Makefile > $nsm_dir/Makefile
-sed -e 's/NSMDATAPLANETEMPLATE/'$opt_t'/g' $opt_p/.nsm.mk > $nsm_dir/.nsm.mk
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_go_dir'/g' $opt_p/build/Dockerfile.template > $nsm_dir/build/Dockerfile
+mkdir -p $nsm_dir/cmd/$nsm_go_dir
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_go_dir'/g' $opt_p/cmd/template/template.go > $nsm_dir/cmd/$nsm_go_dir/$nsm_go_dir'.go'
+mkdir -p $nsm_dir/conf/$nsm_go_dir
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_go_dir'/g' $opt_p/conf/template/template.yaml > $nsm_dir/conf/$nsm_go_dir/$nsm_go_dir'.yaml'
+mkdir -p $nsm_dir/pkg/nsm/apis/$nsm_proto_dir
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_proto_dir'/g' $opt_p/pkg/nsm/apis/template/template.proto > $nsm_dir/pkg/nsm/apis/$nsm_proto_dir/$nsm_proto_dir'.proto'
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_proto_dir'/g' $opt_p/pkg/nsm/apis/template/doc.go > $nsm_dir/pkg/nsm/apis/$nsm_proto_dir/doc.go
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_go_dir'/g' $opt_p/Makefile > $nsm_dir/Makefile
+sed -e 's/NSMDATAPLANETEMPLATE/'$nsm_go_dir'/g' $opt_p/.nsm.mk > $nsm_dir/.nsm.mk
 echo
 exit 1

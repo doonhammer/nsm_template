@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package sidecardataplane;
+
+import "github.com/ligato/networkservicemesh/pkg/nsm/apis/common/common.proto";
+
+enum NSMPodType {
+    DEFAULT_POD = 0;
+    NSMCLIENT = 1;
+    NSE = 2;
+}
+message Pod {
+    common.Metadata metadata = 1;
+    string ip_address = 2;
+}
+
+message BuildConnectRequest {
+    Pod source_pod = 1;
+    Pod destination_pod = 2;
+}
+
+message BuildConnectReply {
+    bool built = 1;
+    string build_error = 2;
+}
+
+message DeleteConnectRequest {
+    Pod pod = 1;
+    NSMPodType pod_type = 2;
+}
+
+message DeleteConnectReply {
+    bool deleted = 1;
+    string delete_error = 2;
+}
+
+service BuildConnect {
+    rpc RequestBuildConnect (BuildConnectRequest) returns (BuildConnectReply);
+}
+
+service DeleteConnect {
+    rpc RequestDeleteConnect (DeleteConnectRequest) returns (DeleteConnectReply);
+}
